@@ -1,8 +1,11 @@
 class Students
   def learn
     puts "I get it!"
-  end 
+  end
 end
 
 class Instructor
+  def teach
+    puts "Everything in Ruby is an object."
+  end 
 end
