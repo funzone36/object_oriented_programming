@@ -15,16 +15,16 @@ class Paperboy
   end
 
   def deliver(start_address, end_address)
-    @experience = @experience + @experience
-    @quota = (@experience / 2) + 50
-    above_quota = 0
     @start_address = start_address
     @end_address = end_address
-    @experience = @end_address - @start_address
-    if @experience < @quota
-    @earnings = @earnings + (@experience * 0.25) - 2
+    houses = @end_address - @start_address
+    @experience = @experience + houses
+    @quota = (@experience / 2) + 50
+    above_quota = 0
+    if houses < @quota
+    @earnings = @earnings + (houses * 0.25) - 2
     else
-    above_quota = @experience - @quota
+    above_quota = houses - @quota
     @earnings = @earnings + (@quota * 0.25) + (above_quota * 0.5)
     end
     @earnings
@@ -38,11 +38,8 @@ end
 
 jason = Paperboy.new('Jason', 'even')
 
-
-puts jason.deliver(100, 220)
-puts jason.quota
+jason.deliver(100, 220)
 puts jason.report
 
-puts jason.deliver(1, 150)
-puts jason.quota
+jason.deliver(1, 150)
 puts jason.report
